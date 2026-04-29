@@ -1,7 +1,5 @@
 # real-world-devops-project
 
-# real-world-devops-project
-
 ## Overview
 
 I built this project to understand how a real DevOps workflow works from code to deployment.
