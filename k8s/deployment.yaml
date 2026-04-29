@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 5000
 
-        # 🔥 Health checks
+        # Health checks
         livenessProbe:
           httpGet:
             path: /health
@@ -35,7 +35,7 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 5
 
-        # 🔥 Resource management
+        # Resource management
         resources:
           requests:
             cpu: "100m"
