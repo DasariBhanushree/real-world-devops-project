@@ -45,3 +45,15 @@ kubectl get pods
 kubectl get svc
 kubectl describe pod
 kubectl scale deployment my-app --replicas=4
+
+## 🐳 Container Registry (Docker Hub → AWS ECR)
+
+* Initially used Docker Hub to store images
+* Later migrated to AWS ECR for better integration with AWS services
+* Updated CI/CD pipeline to push images to ECR
+* Used ECR images for deployment in EKS
+
+This shows how container registry can be switched based on environment and requirements.
+
+
+Code → GitHub → CI/CD → ECR → EKS → LoadBalancer
