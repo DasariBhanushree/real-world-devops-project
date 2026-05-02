@@ -2,20 +2,22 @@
 
 ## Overview
 
-I built this project to understand how a real DevOps workflow works from code to deployment.
+Built an end-to-end DevOps workflow to understand how applications move from code to production.
 
-The goal was to take a simple application, containerize it, automate the build process, and deploy it on Kubernetes using AWS EKS.
+The project covers containerization, CI/CD automation, and deployment on Kubernetes using AWS EKS.
 
 ---
 
 ## What I did
 
-* Wrote a simple Python application
-* Created a Docker image and pushed it to Docker Hub
-* Set up a CI pipeline using GitHub Actions to build and push the image
-* Deployed the application to AWS EKS using Kubernetes manifests
-* Added probes, resource limits, and scaling
-* Exposed the application using a LoadBalancer
+- Created a simple Python application  
+- Containerized the app using Docker  
+- Initially pushed images to Docker Hub, later migrated to AWS ECR  
+- Set up CI/CD using GitHub Actions to build and push images  
+- Deployed the application to AWS EKS using Kubernetes manifests  
+- Configured Ingress for routing traffic  
+- Implemented Horizontal Pod Autoscaler (HPA) for auto scaling  
+- Added readiness/liveness probes and resource limits  
 
 ---
 
@@ -27,33 +29,44 @@ Code → GitHub → CI/CD → ECR → EKS → Ingress → HPA → Live Applicati
 
 ## Kubernetes (EKS)
 
-* Deployed application on AWS EKS cluster
-* Used Deployment with replicas, readiness and liveness probes
-* Added CPU and memory limits
-* Exposed service using LoadBalancer
-* AWS created an ELB and provided external access
+- Deployed application on AWS EKS cluster  
+- Used Deployment with replicas, readiness, and liveness probes  
+- Configured Service (ClusterIP) for internal communication  
+- Used NGINX Ingress Controller to expose the application  
+- Implemented HPA for scaling based on CPU usage  
 
 ---
 
-## Application URL
+## Container Registry (Docker Hub → AWS ECR)
 
-http://a3cdab83d0d2f4aa98cb20a53bf4e5a7-108641135.us-east-1.elb.amazonaws.com/
+- Started with Docker Hub for storing images  
+- Migrated to AWS ECR for better integration with AWS  
+- Updated CI/CD pipeline to push images to ECR  
+- Used ECR images for Kubernetes deployment  
 
-## Commands I used
+---
 
+## CI/CD Pipeline
+
+- Triggered on code push to GitHub  
+- Builds Docker image  
+- Pushes image to AWS ECR  
+- Updates Kubernetes deployment automatically  
+
+---
+
+## Application Access
+
+Application is exposed using Kubernetes Ingress (via AWS ELB).
+
+---
+
+## Commands Used
+
+```bash
 kubectl get pods
 kubectl get svc
-kubectl describe pod
-kubectl scale deployment my-app --replicas=4
-
-## 🐳 Container Registry (Docker Hub → AWS ECR)
-
-* Initially used Docker Hub to store images
-* Later migrated to AWS ECR for better integration with AWS services
-* Updated CI/CD pipeline to push images to ECR
-* Used ECR images for deployment in EKS
-
-This shows how container registry can be switched based on environment and requirements.
-
-
-Code → GitHub → CI/CD → ECR → EKS → LoadBalancer
+kubectl get ingress
+kubectl get hpa
+kubectl top pods
+kubectl describe pod <pod-name>
