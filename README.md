@@ -21,7 +21,7 @@ The goal was to take a simple application, containerize it, automate the build p
 
 ## Flow
 
-Code → GitHub → CI/CD → Docker Hub → AWS EKS → LoadBalancer
+Code → GitHub → CI/CD → ECR → EKS → Ingress → HPA → Live Application
 
 ---
 
