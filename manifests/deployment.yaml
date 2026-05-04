@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: IMAGE_PLACEHOLDER
+        image: dasaribhanu/my-app:v1
         ports:
         - containerPort: 5000
 
