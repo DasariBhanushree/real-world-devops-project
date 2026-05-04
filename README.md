@@ -70,3 +70,14 @@ kubectl get ingress
 kubectl get hpa
 kubectl top pods
 kubectl describe pod <pod-name>
+
+## Architecture
+
+GitHub → GitHub Actions → Docker Build → Push to ECR → Deploy to EKS → Ingress → LoadBalancer → Users
+
+- Code is pushed to GitHub
+- CI/CD pipeline builds Docker image
+- Image pushed to AWS ECR
+- Kubernetes (EKS) deploys the app
+- Ingress exposes the service
+- HPA handles auto-scaling
