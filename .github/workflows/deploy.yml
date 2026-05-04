@@ -47,7 +47,7 @@ jobs:
           $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:${{ github.sha }}
 
       - name: Update kubeconfig
-        run: aws eks update-kubeconfig --region $AWS_REGION --name YOUR_CLUSTER_NAME
+        run: aws eks update-kubeconfig --region $AWS_REGION --name my-devops-cluster
 
       - name: Deploy to EKS
         run: |
