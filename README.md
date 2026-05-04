@@ -87,3 +87,6 @@ GitHub → GitHub Actions → Docker Build → Push to ECR → Deploy to EKS →
                                     [Ingress]
                                          ↓
                                       [Users]
+
+
+trigger pipeline
