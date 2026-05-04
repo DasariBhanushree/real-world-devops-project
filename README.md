@@ -81,3 +81,9 @@ GitHub → GitHub Actions → Docker Build → Push to ECR → Deploy to EKS →
 - Kubernetes (EKS) deploys the app
 - Ingress exposes the service
 - HPA handles auto-scaling
+
+[GitHub] → [GitHub Actions] → [Docker] → [ECR] → [EKS]
+                                         ↓
+                                    [Ingress]
+                                         ↓
+                                      [Users]
