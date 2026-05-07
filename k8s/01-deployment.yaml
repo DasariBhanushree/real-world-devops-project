@@ -21,7 +21,7 @@ spec:
       containers:
       - name: my-app
 
-        image: 507675081677.dkr.ecr.us-east-1.amazonaws.com/devops-app:347e05cc8914abdcce424044ff3c383761c7309a
+        image: 507675081677.dkr.ecr.us-east-1.amazonaws.com/devops-app:63f447623f637e0943a2e6c994325d8690f3311b
 
         ports:
         - containerPort: 5000
