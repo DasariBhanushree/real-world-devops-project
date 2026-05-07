@@ -15,5 +15,9 @@ def health():
 def version():
     return os.getenv("APP_MODE", "default")
 
+@app.route("/secret")
+def secret():
+    return os.getenv("DB_PASSWORD", "not-found")
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
