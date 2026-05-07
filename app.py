@@ -1,10 +1,11 @@
 from flask import Flask
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "return App is running v2"
+    return "App is running from ArgoCD GitOps."
 
 @app.route("/health")
 def health():
@@ -12,7 +13,7 @@ def health():
 
 @app.route("/version")
 def version():
-    return "v1.0"
+    return os.getenv("APP_MODE", "default")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
