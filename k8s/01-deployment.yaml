@@ -4,21 +4,34 @@ metadata:
   name: my-app
   labels:
     app: my-app
+
 spec:
   replicas: 2
+
   selector:
     matchLabels:
       app: my-app
+
   template:
     metadata:
       labels:
         app: my-app
+
     spec:
       containers:
       - name: my-app
-        image: actual-ecr-image
+
+        image: 507675081677.dkr.ecr.us-east-1.amazonaws.com/devops-app:347e05cc8914abdcce424044ff3c383761c7309a
+
         ports:
         - containerPort: 5000
+
+        env:
+        - name: APP_MODE
+          valueFrom:
+            configMapKeyRef:
+              name: my-app-config
+              key: APP_MODE
 
         # Health checks
         livenessProbe:
