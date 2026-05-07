@@ -33,6 +33,12 @@ spec:
               name: my-app-config
               key: APP_MODE
 
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-app-secret
+              key: DB_PASSWORD
+
         # Health checks
         livenessProbe:
           httpGet:
